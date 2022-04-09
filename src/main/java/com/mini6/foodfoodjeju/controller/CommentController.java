@@ -1,23 +1,40 @@
 package com.mini6.foodfoodjeju.controller;
 
 import com.mini6.foodfoodjeju.dto.CommentDto;
+import com.mini6.foodfoodjeju.model.Comment;
+import com.mini6.foodfoodjeju.repository.CommentRepository;
 import com.mini6.foodfoodjeju.service.CommentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.List;
+import java.util.Optional;
 
+@RequiredArgsConstructor
 @RestController
 public class CommentController {
+    private final CommentRepository commentRepository;
+    private final CommentService commentService;
 
-    @GetMapping("/api")
-    public List<CommentDto> getStore() throws IOException {
-        List<CommentDto> storeDtoList = CommentService.getStore();
-        for(CommentDto storeDto : storeDtoList){
-            System.out.println(storeDto.getRegion1cd().get("label"));
-        }
-        return storeDtoList;
+    @ResponseBody
+    @GetMapping("/comment/{storeId}")
+    public Optional<Comment> readComment(@PathVariable Long storeId) {
+        return commentRepository.findById(storeId);
+    }
+
+    @PostMapping("/comment")
+    public void createComment(@RequestBody CommentDto commentDto){
+        commentService.createComment(commentDto);
+    }
+
+    @ResponseBody
+    @PutMapping("/comment/{commentId}")
+    public Comment updateComment(@PathVariable Long commentId, @RequestBody CommentDto commentDto){
+        return commentService.updateComment(commentId, commentDto);
+    }
+
+    @DeleteMapping("/comment/{commentId}")
+    public void deleteComment(@PathVariable Long commentId){
+        commentRepository.deleteById(commentId);
     }
 
 }

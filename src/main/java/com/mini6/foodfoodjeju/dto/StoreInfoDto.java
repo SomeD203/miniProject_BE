@@ -10,5 +10,6 @@ public class StoreInfoDto {
     private String address;
     private String phoneno;
     private Map<String, String> region2cd;
+    private RepPhoto repPhoto;
 
 }
