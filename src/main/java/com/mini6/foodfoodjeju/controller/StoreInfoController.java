@@ -25,16 +25,8 @@ public class StoreInfoController {
     @ResponseBody
     @CrossOrigin(origins = "http://localhost:3000")
     public List<StoreInfoDto> getStores() throws Exception{
-        List<StoreInfoDto> storeInfoDtoList = storeInfoService.getStores();
 
-        for(StoreInfoDto storeInfoDto : storeInfoDtoList){
-            RepPhoto repPhoto = storeInfoDto.getRepPhoto();
-            Object photoId = repPhoto.getPhotoid().get("imgpath");
-            String photoUrl = photoId.toString();
-            System.out.println(photoUrl);
-        }
-
-        return  storeInfoDtoList;
+        return storeInfoService.getStores();
     }
 
 }

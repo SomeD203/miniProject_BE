@@ -23,7 +23,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-//    @Transactional
+    @Transactional
     public void registerUser(SignupRequestDto requestDto) {
 // 회원 ID 중복 확인
         String username = requestDto.getUsername();

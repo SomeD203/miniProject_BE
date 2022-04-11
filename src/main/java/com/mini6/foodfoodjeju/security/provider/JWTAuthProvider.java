@@ -1,6 +1,5 @@
 package com.mini6.foodfoodjeju.security.provider;
 
-import com.auth0.jwt.JWT;
 import com.mini6.foodfoodjeju.model.User;
 import com.mini6.foodfoodjeju.repository.UserRepository;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;

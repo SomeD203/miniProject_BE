@@ -22,7 +22,7 @@ public class HeartService {
             Heart heart = optionalHeart.get();
             heart.addCount();
         }else {
-            heartRepository.save();
+            return;
         }
     }
 
