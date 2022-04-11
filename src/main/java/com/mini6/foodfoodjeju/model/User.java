@@ -25,6 +25,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String nickname;
+
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -35,16 +38,18 @@ public class User {
     @Column(unique = true)
     private Long kakaoId;
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String nickname, String email) {
         this.username = username;
         this.password = password;
+        this.nickname = nickname;
         this.email = email;
         this.kakaoId = null;
     }
 
-    public User(String username, String password, String email, Long kakaoId) {
+    public User(String username, String password, String nickname, String email, Long kakaoId) {
         this.username = username;
         this.password = password;
+        this.nickname = nickname;
         this.email = email;
         this.kakaoId = kakaoId;
     }

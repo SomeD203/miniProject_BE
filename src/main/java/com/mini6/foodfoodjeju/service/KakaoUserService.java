@@ -57,8 +57,12 @@ public class KakaoUserService {
         // HTTP Body 생성
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         body.add("grant_type", "authorization_code");
+
+//        body.add("client_id", "3118fb4461c3c1de77801f378aa7c8be");
         body.add("client_id", "934ef42e29dc623b00dddb39e1f19ea4");
-        body.add("redirect_uri", "http://3.37.89.93/user/kakao/callback");
+        body.add("redirect_uri", "http://localhost:8080/user/kakao/callback");
+
+
         body.add("code", code);
 
         // HTTP 요청 보내기
@@ -135,7 +139,7 @@ public class KakaoUserService {
                 // role: 일반 사용자
 //                UserRoleEnum role = UserRoleEnum.USER;
 
-                kakaoUser = new User(nickname, encodedPassword, email,  kakaoId);
+                kakaoUser = new User(nickname, encodedPassword, nickname, email, kakaoId);
             }
 
             userRepository.save(kakaoUser);
