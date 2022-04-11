@@ -17,8 +17,6 @@ public class User {
     @Id
     private Long id;
 
-    // nullable: null 허용 여부
-// unique: 중복 허용 여부 (false 일때 중복 허용)
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -28,7 +26,7 @@ public class User {
 //    @Column(nullable = false)
 //    private String nickname;
 
-    @Column(nullable = false, unique = true)
+    @Column
     private String email;
 
     @Column(nullable = false)
@@ -38,19 +36,16 @@ public class User {
     @Column(unique = true)
     private Long kakaoId;
 
-    public User(String username, String password, String email, UserRoleEnum role) {
+    public User(String username,  String password,  String email) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = role;
-        this.kakaoId = null;
     }
 
     public User(String username, String password, String email, UserRoleEnum role, Long kakaoId) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = role;
         this.kakaoId = kakaoId;
     }
 }

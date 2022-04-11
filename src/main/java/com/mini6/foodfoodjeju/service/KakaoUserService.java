@@ -1,5 +1,6 @@
 package com.mini6.foodfoodjeju.service;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +8,9 @@ import com.mini6.foodfoodjeju.dto.KakaoUserInfoDto;
 import com.mini6.foodfoodjeju.model.User;
 import com.mini6.foodfoodjeju.model.UserRoleEnum;
 import com.mini6.foodfoodjeju.repository.UserRepository;
+import com.mini6.foodfoodjeju.security.JwtTokenProvider;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,7 +26,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.UUID;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+
 
 @Service
 public class KakaoUserService {
