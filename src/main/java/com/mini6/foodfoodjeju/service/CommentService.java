@@ -1,45 +1,36 @@
 package com.mini6.foodfoodjeju.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mini6.foodfoodjeju.dto.CommentDto;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import com.mini6.foodfoodjeju.model.Comment;
+import com.mini6.foodfoodjeju.repository.CommentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class CommentService {
-    public static List<CommentDto> getStore() throws IOException {
-        // 2. 비짓제주 API 호출에 필요한 Header, Body 정리
-        RestTemplate rest = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        String body = "";
-        HttpEntity<String> requestEntity = new HttpEntity<>(body, headers);
+    private final CommentRepository commentRepository;
+    public void createComment(CommentDto commentDto) {
+        List<Comment> commentList = commentRepository.findAll();
 
-        // 3. 비짓제주 API 호출 결과 -> ApiResponseJson (JSON 형태)
-        ResponseEntity<String> responseEntity = rest.exchange("https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=wemge2yu3yb8k83d&locale=kr&category=c4", HttpMethod.GET, requestEntity, String.class);
-        String jejuApiResponseJson = responseEntity.getBody();
+        Long storeId = commentDto.getStoreId();
+        Long userId = commentDto.getUserId();
+        int commentCnt = commentList.size() + 1;
+        String nickName = commentDto.getNickName();
+        String comment = commentDto.getComment();
 
+        Comment createComment = new Comment(storeId, userId, commentCnt, nickName, comment);
 
-        // 4. jejuApiResponseJson (JSON 형태) -> itemDtoList (자바 객체 형태)
-        // - jejuApiResponseJson 에서 우리가 사용할 데이터만 추출 -> List<commentDto> 객체로 변환
-        ObjectMapper objectMapper = new ObjectMapper()
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        JsonNode itemsNode = objectMapper.readTree(jejuApiResponseJson).get("items");
+        commentRepository.save(createComment);
+    }
 
-
-        List<CommentDto> commentDtoList = objectMapper
-                .readerFor(new TypeReference<List<CommentDto>>() {})
-                .readValue(itemsNode);
-
-        return commentDtoList;
+    public Comment updateComment(Long commentId, CommentDto commentDto) {
+        Comment comment = commentRepository.findById(commentId).orElseThrow(
+                () -> new NullPointerException("존재하지 않는 댓글입니다.")
+        );
+        comment.update(commentDto);
+        return comment;
     }
 }

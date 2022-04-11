@@ -1,15 +1,21 @@
 package com.mini6.foodfoodjeju.controller;
 
+import com.mini6.foodfoodjeju.dto.RepPhoto;
 import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.service.StoreInfoService;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-@Controller
+@RestController
 //@RequiredArgsConstructor
 public class StoreInfoController {
 
@@ -20,14 +26,19 @@ public class StoreInfoController {
         this.storeInfoService = storeInfoService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/main")
     @ResponseBody
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<StoreInfoDto> getStores() throws Exception{
         List<StoreInfoDto> storeInfoDtoList = storeInfoService.getStores();
 
-        for(int i=0;i<storeInfoDtoList.size();i++){
-            System.out.println(storeInfoDtoList.get(i).getRegion2cd().get("label"));
+        for(StoreInfoDto storeInfoDto : storeInfoDtoList){
+            RepPhoto repPhoto = storeInfoDto.getRepPhoto();
+            Object photoId = repPhoto.getPhotoid().get("imgpath");
+            String photoUrl = photoId.toString();
+            System.out.println(photoUrl);
         }
+
         return  storeInfoDtoList;
     }
 
