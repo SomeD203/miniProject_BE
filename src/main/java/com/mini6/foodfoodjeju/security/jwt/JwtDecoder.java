@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Optional;
-
 import static com.mini6.foodfoodjeju.security.jwt.JwtTokenUtils.*;
 
 @Component

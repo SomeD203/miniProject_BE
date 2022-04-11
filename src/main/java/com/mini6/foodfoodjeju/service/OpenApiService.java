@@ -48,8 +48,6 @@ public class OpenApiService {
             Object photoId = repPhoto.getPhotoid().get("imgpath");
             String photoUrl = photoId.toString();
             String regionName = storeInfoDto.getRegion2cd().get("label");
-            System.out.println(photoUrl);
-            System.out.println(regionName);
             OpenApi openApi =new OpenApi(storeInfoDto.getTitle(), regionName, storeInfoDto.getAddress(), storeInfoDto.getPhoneno(), photoUrl);
             openApiRepository.save(openApi);
         }
