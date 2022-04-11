@@ -21,7 +21,7 @@ public class StoreInfoController {
         this.storeInfoService = storeInfoService;
     }
 
-    @GetMapping("/main")
+    @GetMapping("/")
     @ResponseBody
     @CrossOrigin(origins = "http://localhost:3000")
     public List<StoreInfoDto> getStores() throws Exception{

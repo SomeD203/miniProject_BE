@@ -2,10 +2,12 @@ package com.mini6.foodfoodjeju.service;
 
 import com.mini6.foodfoodjeju.dto.SignupRequestDto;
 import com.mini6.foodfoodjeju.model.User;
+import com.mini6.foodfoodjeju.model.UserRoleEnum;
 import com.mini6.foodfoodjeju.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -21,6 +23,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+//    @Transactional
     public void registerUser(SignupRequestDto requestDto) {
 // 회원 ID 중복 확인
         String username = requestDto.getUsername();
@@ -32,10 +35,20 @@ public class UserService {
 // 패스워드 암호화
         String password = passwordEncoder.encode(requestDto.getPassword());
         String email = requestDto.getEmail();
+//        String nickname = requestDto.getNickname();
+
+        // 사용자 ROLE 확인
+        UserRoleEnum role = UserRoleEnum.USER;
+        if (requestDto.isAdmin()) {
+            if (!requestDto.getAdminToken().equals(ADMIN_TOKEN)) {
+                throw new IllegalArgumentException("관리자 암호가 틀려 등록이 불가능합니다.");
+            }
+            role = UserRoleEnum.ADMIN;
+        }
 
 
-
-        User user = new User(username, password, email);
+//        User user = new User(username, password, nickname, email);
+        User user = new User(username, password, email, role);
         userRepository.save(user);
     }
 

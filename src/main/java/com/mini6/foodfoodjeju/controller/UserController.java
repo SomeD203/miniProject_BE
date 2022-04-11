@@ -2,15 +2,18 @@ package com.mini6.foodfoodjeju.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mini6.foodfoodjeju.dto.SignupRequestDto;
+import com.mini6.foodfoodjeju.dto.UserInfoDto;
+import com.mini6.foodfoodjeju.model.UserRoleEnum;
+import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.KakaoUserService;
 import com.mini6.foodfoodjeju.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+//@CrossOrigin(origins = "http://localhost:3000") // CORS 설정
 public class UserController {
     private final UserService userService;
     private final KakaoUserService kakaoUserService;
@@ -22,8 +25,27 @@ public class UserController {
         this.kakaoUserService = kakaoUserService;
     }
 
+//    // 회원 로그인 페이지
+//    @GetMapping("/user/login")
+//    public String login() {
+//        return "login";
+//    }
+//
+//    // 회원 가입 페이지
+//    @GetMapping("/user/signup")
+//    public String signup() {
+//        return "signup";
+//    }
+//
+//    // 회원 가입 요청 처리
+//    @PostMapping("/user/signup")
+//    public String registerUser(SignupRequestDto requestDto) {
+//        userService.registerUser(requestDto);
+//        return "redirect:/user/login";
+//    }
+
     // 회원 로그인 페이지
-    @GetMapping("/user/login")
+    @GetMapping("/user/loginView")
     public String login() {
         return "login";
     }
@@ -38,7 +60,18 @@ public class UserController {
     @PostMapping("/user/signup")
     public String registerUser(SignupRequestDto requestDto) {
         userService.registerUser(requestDto);
-        return "redirect:/user/login";
+        return "redirect:/user/loginView";
+    }
+
+    // 회원 관련 정보 받기
+    @PostMapping("/user/userinfo")
+    @ResponseBody
+    public UserInfoDto getUserInfo(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        String username = userDetails.getUser().getUsername();
+        UserRoleEnum role = userDetails.getUser().getRole();
+        boolean isAdmin = (role == UserRoleEnum.ADMIN);
+
+        return new UserInfoDto(username, isAdmin);
     }
 
     @GetMapping("/user/kakao/callback")

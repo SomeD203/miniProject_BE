@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mini6.foodfoodjeju.dto.KakaoUserInfoDto;
 import com.mini6.foodfoodjeju.model.User;
+import com.mini6.foodfoodjeju.model.UserRoleEnum;
 import com.mini6.foodfoodjeju.repository.UserRepository;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +58,9 @@ public class KakaoUserService {
         // HTTP Body 생성
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         body.add("grant_type", "authorization_code");
+//        body.add("client_id", "3118fb4461c3c1de77801f378aa7c8be");
         body.add("client_id", "934ef42e29dc623b00dddb39e1f19ea4");
-        body.add("redirect_uri", "http://3.37.89.93/user/kakao/callback");
+        body.add("redirect_uri", "http://localhost:8080/user/kakao/callback");
         body.add("code", code);
 
         // HTTP 요청 보내기
@@ -133,9 +135,9 @@ public class KakaoUserService {
                 // email: kakao email
                 String email = kakaoUserInfo.getEmail();
                 // role: 일반 사용자
-//                UserRoleEnum role = UserRoleEnum.USER;
+                UserRoleEnum role = UserRoleEnum.USER;
 
-                kakaoUser = new User(nickname, encodedPassword, email,  kakaoId);
+                kakaoUser = new User(nickname, encodedPassword, email, role, kakaoId);
             }
 
             userRepository.save(kakaoUser);
