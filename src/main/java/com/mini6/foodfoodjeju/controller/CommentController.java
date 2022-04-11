@@ -16,25 +16,24 @@ public class CommentController {
     private final CommentService commentService;
 
     @ResponseBody
-    @GetMapping("/comment/{storeId}")
+    @GetMapping("/api/comment/{storeId}")
     public Optional<Comment> readComment(@PathVariable Long storeId) {
         return commentRepository.findById(storeId);
     }
 
-    @PostMapping("/comment")
+    @PostMapping("/api/comment")
     public void createComment(@RequestBody CommentDto commentDto){
         commentService.createComment(commentDto);
     }
 
     @ResponseBody
-    @PutMapping("/comment/{commentId}")
+    @PutMapping("/api/comment/{commentId}")
     public Comment updateComment(@PathVariable Long commentId, @RequestBody CommentDto commentDto){
         return commentService.updateComment(commentId, commentDto);
     }
 
-    @DeleteMapping("/comment/{commentId}")
+    @DeleteMapping("/api/comment/{commentId}")
     public void deleteComment(@PathVariable Long commentId){
         commentRepository.deleteById(commentId);
     }
-
 }

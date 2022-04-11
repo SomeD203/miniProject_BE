@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 public class Comment {
     // ID가 자동으로 생성 및 증가합니다.
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long commentId;
 
