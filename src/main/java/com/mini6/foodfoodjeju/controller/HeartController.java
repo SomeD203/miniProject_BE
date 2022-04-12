@@ -1,5 +1,6 @@
 package com.mini6.foodfoodjeju.controller;
 
+import com.mini6.foodfoodjeju.dto.HeartDto;
 import com.mini6.foodfoodjeju.model.Heart;
 import com.mini6.foodfoodjeju.service.HeartService;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +13,9 @@ import java.util.Optional;
 public class HeartController {
     HeartService heartService;
 
-    @GetMapping("/api/heart/{storeId}")
-    public Optional<Heart> readHeart(@PathVariable Long storeId){
-       return heartService.readHeart(storeId);
+    @GetMapping("/api/heart")
+    public Optional<Heart> readHeart(@RequestBody HeartDto heartDto){
+       return heartService.readHeart(heartDto);
     }
 
     @PostMapping("/api/heart/{storeId}")

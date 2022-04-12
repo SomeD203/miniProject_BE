@@ -1,5 +1,6 @@
 package com.mini6.foodfoodjeju.model;
 
+import com.mini6.foodfoodjeju.validator.OpenApiValidator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
