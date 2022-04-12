@@ -1,14 +1,11 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.mini6.foodfoodjeju.dto.userdto.LoginDto;
 import com.mini6.foodfoodjeju.dto.userdto.ReturnUserDto;
 import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
-import com.mini6.foodfoodjeju.repository.UserRepository;
-import com.mini6.foodfoodjeju.service.KakaoUserService;
 import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-    private final KakaoUserService kakaoUserService;
+//    private final KakaoUserService kakaoUserService;
 
 
     //회원가입

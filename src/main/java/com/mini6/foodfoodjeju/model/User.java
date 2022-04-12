@@ -23,29 +23,23 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+
 //    @Column(nullable = false)
-//    private String nickname;
-
-    @Column
-    private String email;
-
-    @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private UserRoleEnum role;
+//    @Enumerated(value = EnumType.STRING)
+//    private UserRoleEnum role;
 
     @Column(unique = true)
     private Long kakaoId;
 
-    public User(String username,  String password,  String email) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.email = email;
     }
 
-    public User(String username, String password, String email, UserRoleEnum role, Long kakaoId) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.kakaoId = kakaoId;
-    }
+//    public User(String username, String password, String email, UserRoleEnum role, Long kakaoId) {
+//        this.username = username;
+//        this.password = password;
+//        this.email = email;
+//        this.kakaoId = kakaoId;
+//    }
 }
