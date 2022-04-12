@@ -31,7 +31,7 @@ public class Store {
     @Column(nullable = false)
     private int commentCnt;
 
-    public Store(String storeName, OpenApi openApi){
+    public Store(String storeName, OpenApi openApi, int commentCnt, int like){
         this.storeName = storeName;
         this.openApi = openApi;
         this.like = like;
