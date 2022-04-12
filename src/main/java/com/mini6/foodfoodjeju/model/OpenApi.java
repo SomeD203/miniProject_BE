@@ -11,10 +11,10 @@ import javax.persistence.*;
 public class OpenApi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long storeId;
+    private Long Id; // 이거 현규가 추가한거같은데
 
     @Column
-    private String storeName;
+    private String storeName;  // 이거는 원래 있었던거 같고
 
     @Column
     private String regionName;
