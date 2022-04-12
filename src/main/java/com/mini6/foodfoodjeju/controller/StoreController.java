@@ -37,11 +37,11 @@ public class StoreController {
 
     }
 
-    @GetMapping("/api/main")
-    public List<Store> getStores(@RequestParam OpenApi openApi){
-
-        System.out.println(openApi);
-        return storeService.getStores(openApi);
-
-    }
+//    @GetMapping("/api/main")
+//    public List<Store> getStores(@RequestParam OpenApi openApi){
+//
+//        System.out.println(openApi);
+//        return storeService.getStores(openApi);
+//
+//    }
 }
