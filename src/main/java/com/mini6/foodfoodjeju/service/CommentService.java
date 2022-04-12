@@ -7,12 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class CommentService {
     private final CommentRepository commentRepository;
-    public void createComment(CommentDto commentDto) {
+    public Comment createComment(CommentDto commentDto) {
         List<Comment> commentList = commentRepository.findAll();
 
         Long storeId = commentDto.getStoreId();
@@ -24,6 +25,7 @@ public class CommentService {
         Comment createComment = new Comment(storeId, userId, commentCnt, nickName, comment);
 
         commentRepository.save(createComment);
+        return createComment;
     }
 
     public Comment updateComment(Long commentId, CommentDto commentDto) {
@@ -31,6 +33,7 @@ public class CommentService {
                 () -> new NullPointerException("존재하지 않는 댓글입니다.")
         );
         comment.update(commentDto);
+        commentRepository.save(comment);
         return comment;
     }
 }

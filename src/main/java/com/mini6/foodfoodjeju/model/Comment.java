@@ -24,7 +24,7 @@ public class Comment {
     private Long userId;
 
     @Column
-    private int commentCnt = 0;
+    private Integer commentCnt = 0;
 
     @Column
     private String nickName;

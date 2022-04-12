@@ -9,6 +9,7 @@ import com.mini6.foodfoodjeju.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -20,14 +21,15 @@ public class CommentController {
     private final OpenApiRepository openApiRepository;
 
     @ResponseBody
-    @GetMapping("/api/comment/{storeId}")
-    public Optional<Comment> readComment(@PathVariable Long storeId) {
-        return commentRepository.findById(storeId);
+    @GetMapping("/api/comment/{openApiId}")
+    public List<Comment> readComment(@PathVariable Long openApiId) {
+        return commentRepository.findAllByStoreId(openApiId);
     }
 
+    @ResponseBody
     @PostMapping("/api/comment")
-    public void createComment(@RequestBody CommentDto commentDto){
-        commentService.createComment(commentDto);
+    public Comment createComment(@RequestBody CommentDto commentDto){
+        return commentService.createComment(commentDto);
     }
 
     @ResponseBody

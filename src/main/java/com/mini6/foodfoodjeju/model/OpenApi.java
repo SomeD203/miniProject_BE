@@ -31,11 +31,15 @@ public class OpenApi {
     @Column
     private String image;
 
-    public OpenApi(String title, String regionName, String address, String phoneno, String photoUrl) {
+    @Column
+    private String intro;
+
+    public OpenApi(String title, String regionName, String address, String phoneno, String photoUrl, String desc) {
         this.storeName = title;
         this.regionName = regionName;
         this.address = address;
         this.phone = phoneno;
         this.image = photoUrl;
+        this.intro = desc;
     }
 }

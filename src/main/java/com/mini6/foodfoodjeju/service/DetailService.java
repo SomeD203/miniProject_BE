@@ -20,8 +20,8 @@ public class DetailService {
 //        return storeList;
 //    }
     @Transactional
-    public List<OpenApi> getDetail(Long storeId){
-        OpenApi openApi = openApiRepository.findById(storeId).orElse(null);
-        return detailRepository.findAllByOpenApiId(openApi);
+    public OpenApi getDetail(Long storeId){
+        return openApiRepository.findById(storeId).orElse(null);
+
     }
 }
