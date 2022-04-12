@@ -22,10 +22,12 @@ public class DetailController {
     private final DetailService detailService;
 
 
+
     @GetMapping("/api/main")
     public List<OpenApi> getMain(){
         return openApiRepository.findAll();
     }
+
 
 
     @GetMapping("/api/main/{storeId}/detail")

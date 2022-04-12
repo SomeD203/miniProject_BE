@@ -22,5 +22,6 @@ public class DetailService {
     @Transactional
     public OpenApi getDetail(Long storeId){
         return openApiRepository.findById(storeId).orElse(null);
+
     }
 }
