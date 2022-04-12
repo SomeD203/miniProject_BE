@@ -30,8 +30,8 @@ public class StoreService {
 
                 List<Store> storeList = new ArrayList<>();
                 for (String storeName : storeNames){
-                        int commentCnt = commentRepository.findByStoreName(storeName).size();
-                        int like = heartRepository.findByStoreName(storeName).size();
+                        int commentCnt = 0;
+                        int like = 0;
                         Store store = new Store(storeName, openApi, commentCnt, like); // 뭔진 모르는데 한번 뒤집어 깜
                         storeRepository.save(store);
                         storeList.add(store);
@@ -43,7 +43,6 @@ public class StoreService {
 
         public List<Store> getStores(OpenApi openApi){
                 return storeRepository.findAllByOpenApi(openApi);
-
         }
 
 

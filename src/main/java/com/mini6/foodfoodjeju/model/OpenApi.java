@@ -3,16 +3,18 @@ package com.mini6.foodfoodjeju.model;
 import com.mini6.foodfoodjeju.validator.OpenApiValidator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
 @Entity
 public class OpenApi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long Id; // 이거 현규가 추가한거같은데
+    private Long openApiId; // 이거 현규가 추가한거같은데
 
     @Column
     private String storeName;  // 이거는 원래 있었던거 같고
