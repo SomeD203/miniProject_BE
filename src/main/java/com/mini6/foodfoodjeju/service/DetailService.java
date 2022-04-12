@@ -22,6 +22,6 @@ public class DetailService {
     @Transactional
     public List<OpenApi> getDetail(Long storeId){
         OpenApi openApi = openApiRepository.findById(storeId).orElse(null);
-        return detailRepository.findAllByStoreId(openApi);
+        return detailRepository.findAllByOpenApiId(openApi);
     }
 }

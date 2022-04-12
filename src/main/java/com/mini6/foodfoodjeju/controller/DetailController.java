@@ -22,7 +22,7 @@ public class DetailController {
     private final DetailService detailService;
 
 
-//    @GetMapping("api/main")
+//    @GetMapping("/api/main")
 //    public List<OpenApi> getMain(){
 //        return openApiRepository.findAll();
 //    }
