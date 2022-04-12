@@ -26,7 +26,7 @@ public class Store {
 
 
     @Column(nullable = false)
-    private int like;
+    private int likeCnt;
 
     @Column(nullable = false)
     private int commentCnt;
@@ -34,17 +34,7 @@ public class Store {
     public Store(String storeName, OpenApi openApi, int commentCnt, int like){
         this.storeName = storeName;
         this.openApi = openApi;
-        this.like = like;
+        this.likeCnt = like;
         this.commentCnt = commentCnt;
     }
-
-
-
-
-
-
-
-
-
-
 }

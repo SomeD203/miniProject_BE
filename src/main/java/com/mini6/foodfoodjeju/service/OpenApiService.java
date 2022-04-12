@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -45,18 +46,25 @@ public class OpenApiService {
         List<StoreInfoDto> storeInfoDtoList = objectMapper
                 .readerFor(new TypeReference<List<StoreInfoDto>>() {})
                 .readValue(itemsNode);
+        List<OpenApi> newDataList = new ArrayList<>();
+        int importKey = 0;
         for(int i = 0; i < storeInfoDtoList.size(); i++){
             RepPhoto repPhoto = storeInfoDtoList.get(i).getRepPhoto();
             Object photoId = repPhoto.getPhotoid().get("imgpath");
             String photoUrl = photoId.toString();
             String regionName = storeInfoDtoList.get(i).getRegion2cd().get("label");
             List<OpenApi> oldDataList = openApiRepository.findAll();
-            OpenApi oldData = oldDataList.get(i);
             OpenApi openApi =new OpenApi(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl);
-            boolean aBoolean = openApiValidator.openApiValidator(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl, oldData);
-            if(!aBoolean){
-                openApiRepository.save(openApi);
-            }
+            int validatorNum = openApiValidator.openApiValidator(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl, oldDataList);
+            newDataList.add(openApi);
+            importKey = validatorNum;
         }
+        if(importKey > 0) {
+            openApiRepository.deleteAll();
+            openApiRepository.saveAll(newDataList);
+        }else {
+            openApiRepository.saveAll(newDataList);
+        }
+
     }
 }

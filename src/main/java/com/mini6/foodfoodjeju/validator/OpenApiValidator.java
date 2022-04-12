@@ -1,24 +1,26 @@
 package com.mini6.foodfoodjeju.validator;
 
 import com.mini6.foodfoodjeju.model.OpenApi;
-import com.mini6.foodfoodjeju.repository.OpenApiRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Component
 public class OpenApiValidator {
-    private final OpenApiRepository openApiRepository;
-    public boolean openApiValidator(String title, String regionName, String address, String phoneno, String photoUrl, OpenApi oldData) {
-        if(! oldData.getStoreName().equals(title) ||
-                        oldData.getRegionName().equals(regionName) ||
-                        oldData.getAddress().equals(address) ||
-                        oldData.getPhone().equals(phoneno) ||
-                        oldData.getImage().equals(photoUrl)
-        ) {
-            openApiRepository.deleteAll();
-            return false;
+    public int openApiValidator(String title, String regionName, String address, String phoneno, String photoUrl, List<OpenApi> oldDataList) {
+        int validatorNum = 0;
+        for(OpenApi oldData : oldDataList){
+            if(! oldData.getStoreName().equals(title) ||
+                    oldData.getRegionName().equals(regionName) ||
+                    oldData.getAddress().equals(address) ||
+                    oldData.getPhone().equals(phoneno) ||
+                    oldData.getImage().equals(photoUrl)
+            ) {
+                validatorNum++;
+            }
         }
-        return true;
+        return validatorNum;
     }
 }

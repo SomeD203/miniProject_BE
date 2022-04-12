@@ -37,8 +37,9 @@ public class CommentController {
     }
 
     @DeleteMapping("/api/comment/{commentId}")
-    public void deleteComment(@PathVariable Long commentId){
+    public String deleteComment(@PathVariable Long commentId){
         commentRepository.deleteById(commentId);
+        return "삭제 완료 ><";
     }
 
     @GetMapping("/api/test")
