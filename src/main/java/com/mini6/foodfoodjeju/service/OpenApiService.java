@@ -15,6 +15,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,7 +30,7 @@ public class OpenApiService {
     private final OpenApiValidator openApiValidator;
     private final CommentRepository commentRepository;
 
-    @PostConstruct
+    @Scheduled(cron = "0 0 22 * * ?")
     public void getOpenApiData() throws Exception{
         RestTemplate rest = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();

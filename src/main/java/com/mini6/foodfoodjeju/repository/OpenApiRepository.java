@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface OpenApiRepository extends JpaRepository<OpenApi, Long> {
-    List<OpenApi> findByRegionName(String regionName);
+    List<OpenApi> findAllByRegionName(String regionName);
 }
