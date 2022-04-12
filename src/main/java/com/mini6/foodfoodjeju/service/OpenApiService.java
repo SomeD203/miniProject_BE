@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mini6.foodfoodjeju.dto.RepPhoto;
 import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.model.OpenApi;
+import com.mini6.foodfoodjeju.repository.CommentRepository;
 import com.mini6.foodfoodjeju.repository.OpenApiRepository;
 import com.mini6.foodfoodjeju.validator.OpenApiValidator;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ import java.util.List;
 public class OpenApiService {
     private final OpenApiRepository openApiRepository;
     private final OpenApiValidator openApiValidator;
+    private final CommentRepository commentRepository;
 
     @PostConstruct
     public void getOpenApiData() throws Exception{
@@ -54,7 +56,7 @@ public class OpenApiService {
             String photoUrl = photoId.toString();
             String regionName = storeInfoDtoList.get(i).getRegion2cd().get("label");
             List<OpenApi> oldDataList = openApiRepository.findAll();
-            OpenApi openApi =new OpenApi(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl);
+            OpenApi openApi =new OpenApi(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl, storeInfoDtoList.get(i).getIntroduction());
             int validatorNum = openApiValidator.openApiValidator(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl, oldDataList);
             newDataList.add(openApi);
             importKey = validatorNum;

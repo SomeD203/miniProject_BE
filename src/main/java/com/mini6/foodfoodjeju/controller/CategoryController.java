@@ -1,6 +1,7 @@
 package com.mini6.foodfoodjeju.controller;
 
 import com.mini6.foodfoodjeju.model.OpenApi;
+import com.mini6.foodfoodjeju.repository.OpenApiRepository;
 import com.mini6.foodfoodjeju.service.OpenApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,11 @@ import java.util.List;
 @RestController
 public class CategoryController {
     OpenApiService openApiService;
+    OpenApiRepository openApiRepository;
 
     @ResponseBody
     @GetMapping("api/main/{regionName}")
-    public List categoryCard(@PathVariable String regionName) throws Exception {
-
-        return null;
+    public List<OpenApi> categoryCard(@PathVariable String regionName) {
+        return openApiRepository.findByRegionName(regionName);
     }
 }

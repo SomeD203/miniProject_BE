@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface DetailRepository extends JpaRepository<OpenApi, Long> {
-    List<OpenApi> findAllByStoreId(OpenApi openApi);
+    List<OpenApi> findAllByOpenApiId(OpenApi openApi);
 }
