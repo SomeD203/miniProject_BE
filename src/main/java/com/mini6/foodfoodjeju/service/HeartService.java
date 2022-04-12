@@ -1,5 +1,6 @@
 package com.mini6.foodfoodjeju.service;
 
+import com.mini6.foodfoodjeju.dto.HeartDto;
 import com.mini6.foodfoodjeju.model.Heart;
 import com.mini6.foodfoodjeju.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +13,10 @@ import java.util.Optional;
 public class HeartService {
     HeartRepository heartRepository;
 
-    public Optional<Heart> readHeart(Long storeId) {
-       return heartRepository.findById(storeId);
+    public Optional<Heart> readHeart(HeartDto heartDto) {
+
+
+        return null;
     }
 
     public void saveHeart(Long storeId) {

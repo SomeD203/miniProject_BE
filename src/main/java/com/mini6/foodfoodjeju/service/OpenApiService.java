@@ -8,6 +8,7 @@ import com.mini6.foodfoodjeju.dto.RepPhoto;
 import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.repository.OpenApiRepository;
+import com.mini6.foodfoodjeju.validator.OpenApiValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +24,7 @@ import java.util.List;
 @Service
 public class OpenApiService {
     private final OpenApiRepository openApiRepository;
+    private final OpenApiValidator openApiValidator;
 
     @PostConstruct
     public void getOpenApiData() throws Exception{
@@ -43,13 +45,18 @@ public class OpenApiService {
         List<StoreInfoDto> storeInfoDtoList = objectMapper
                 .readerFor(new TypeReference<List<StoreInfoDto>>() {})
                 .readValue(itemsNode);
-        for(StoreInfoDto storeInfoDto : storeInfoDtoList){
-            RepPhoto repPhoto = storeInfoDto.getRepPhoto();
+        for(int i = 0; i < storeInfoDtoList.size(); i++){
+            RepPhoto repPhoto = storeInfoDtoList.get(i).getRepPhoto();
             Object photoId = repPhoto.getPhotoid().get("imgpath");
             String photoUrl = photoId.toString();
-            String regionName = storeInfoDto.getRegion2cd().get("label");
-            OpenApi openApi =new OpenApi(storeInfoDto.getTitle(), regionName, storeInfoDto.getAddress(), storeInfoDto.getPhoneno(), photoUrl);
-            openApiRepository.save(openApi);
+            String regionName = storeInfoDtoList.get(i).getRegion2cd().get("label");
+            List<OpenApi> oldDataList = openApiRepository.findAll();
+            OpenApi oldData = oldDataList.get(i);
+            OpenApi openApi =new OpenApi(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl);
+            boolean aBoolean = openApiValidator.openApiValidator(storeInfoDtoList.get(i).getTitle(), regionName, storeInfoDtoList.get(i).getAddress(), storeInfoDtoList.get(i).getPhoneno(), photoUrl, oldData);
+            if(!aBoolean){
+                openApiRepository.save(openApi);
+            }
         }
     }
 }
