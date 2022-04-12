@@ -1,6 +1,5 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.mini6.foodfoodjeju.dto.RepPhoto;
 import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.service.StoreInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
