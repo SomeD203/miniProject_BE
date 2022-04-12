@@ -14,7 +14,7 @@ public class LoginDto {
     //로그인을 위한 username과 password
     @NotNull
     @Size(min = 3, max = 50)
-    private String username;
+    private String userName;
 
     @NotNull
     @Size(min = 3, max = 100)

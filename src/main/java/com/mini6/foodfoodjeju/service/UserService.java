@@ -33,12 +33,12 @@ public class UserService {
     public String registerUser(SignupRequestDto signupRequestDto) {
 
 // 회원 ID 중복 확인
-        String username = signupRequestDto.getUsername();
+        String username = signupRequestDto.getUserName();
         Optional<User> foundUsername = userRepository.findByUsername(username);
         //아이디 중복검사
         UserValidator.checkUserName(foundUsername);
         //패스워드 일치여부 검사
-        UserValidator.checkPassword(signupRequestDto);
+//        UserValidator.checkPassword(signupRequestDto);
 // 패스워드 암호화
         String password = passwordEncoder.encode(signupRequestDto.getPassword());
         String email = signupRequestDto.getEmail();
@@ -60,7 +60,7 @@ public class UserService {
     public ReturnUserDto login(LoginDto loginDto) {
         ReturnUserDto returnUserDto = new ReturnUserDto();
         {
-            User member = userRepository.findByUsername(loginDto.getUsername())
+            User member = userRepository.findByUsername(loginDto.getUserName())
                     .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID 입니다."));
             if (!passwordEncoder.matches(loginDto.getPassword(), member.getPassword())) {
                 throw new IllegalArgumentException("비밀번호를 다시 확인해 주세요.");

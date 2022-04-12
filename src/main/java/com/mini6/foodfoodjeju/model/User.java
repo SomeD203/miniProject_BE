@@ -29,7 +29,7 @@ public class User {
     @Column
     private String email;
 
-    @Column(nullable = false)
+    @Column
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 

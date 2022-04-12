@@ -20,6 +20,11 @@ public class CategoryController {
     @ResponseBody
     @GetMapping("api/main/{regionName}")
     public List<OpenApi> categoryCard(@PathVariable String regionName) {
-        return openApiRepository.findByRegionName(regionName);
+        System.out.println(regionName);
+        List<OpenApi> openApiList = openApiRepository.findAllByRegionName(regionName);
+        for(OpenApi openApi : openApiList){
+            System.out.println(openApi.getRegionName());
+        }
+        return openApiList;
     }
 }
