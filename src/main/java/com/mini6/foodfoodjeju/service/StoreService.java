@@ -34,7 +34,7 @@ public class StoreService {
 
         }
 
-        public List<Store> getStores(String openApi){
+        public List<Store> getStores(OpenApi openApi){
                 return storeRepository.findAllByOpenApi(openApi);
 
         }

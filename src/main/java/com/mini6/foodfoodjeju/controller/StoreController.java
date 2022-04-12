@@ -39,12 +39,8 @@ public class StoreController {
 
     @GetMapping("/api/main")
     public List<Store> getStores(@RequestParam OpenApi openApi){
-        List<Store> storeList = storeService.getStores(openApi.toString());
+        List<Store> storeList = storeService.getStores(openApi);
 
         return storeList;
-
     }
-
-
-
 }
