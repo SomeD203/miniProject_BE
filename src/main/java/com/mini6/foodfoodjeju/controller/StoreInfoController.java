@@ -23,7 +23,6 @@ public class StoreInfoController {
 
     @GetMapping("/")
     @ResponseBody
-    @CrossOrigin(origins = "http://localhost:3000")
     public List<StoreInfoDto> getStores() throws Exception{
 
         return storeInfoService.getStores();

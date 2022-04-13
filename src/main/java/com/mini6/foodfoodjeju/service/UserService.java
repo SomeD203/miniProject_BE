@@ -9,7 +9,6 @@ import com.mini6.foodfoodjeju.repository.UserRepository;
 import com.mini6.foodfoodjeju.security.JwtTokenProvider;
 import com.mini6.foodfoodjeju.validator.UserValidator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +32,7 @@ public class UserService {
     public String registerUser(SignupRequestDto signupRequestDto) {
 
 // 회원 ID 중복 확인
-        String username = signupRequestDto.getUserName();
+        String username = signupRequestDto.getUsername();
         Optional<User> foundUsername = userRepository.findByUsername(username);
         //아이디 중복검사
         UserValidator.checkUserName(foundUsername);
@@ -60,7 +59,7 @@ public class UserService {
     public ReturnUserDto login(LoginDto loginDto) {
         ReturnUserDto returnUserDto = new ReturnUserDto();
         {
-            User member = userRepository.findByUsername(loginDto.getUserName())
+            User member = userRepository.findByUsername(loginDto.getUsername())
                     .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID 입니다."));
             if (!passwordEncoder.matches(loginDto.getPassword(), member.getPassword())) {
                 throw new IllegalArgumentException("비밀번호를 다시 확인해 주세요.");

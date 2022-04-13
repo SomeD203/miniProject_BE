@@ -30,7 +30,7 @@ public class OpenApiService {
     private final OpenApiValidator openApiValidator;
     private final CommentRepository commentRepository;
 
-    @Scheduled(cron = "0 0 22 * * ?")
+//    @Scheduled(cron = "0 40 1 * * ?") // 새벽 1시 40분에 해당 메소드 실행(cron 언어)
     public void getOpenApiData() throws Exception{
         RestTemplate rest = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -63,7 +63,7 @@ public class OpenApiService {
             importKey = validatorNum;
         }
         if(importKey > 0) {
-            openApiRepository.deleteAll();
+            openApiRepository.deleteAllWithQuery();
             openApiRepository.saveAll(newDataList);
         }else {
             openApiRepository.saveAll(newDataList);

@@ -14,15 +14,13 @@ import java.util.Optional;
 public class CommentService {
     private final CommentRepository commentRepository;
     public Comment createComment(CommentDto commentDto) {
-        List<Comment> commentList = commentRepository.findAll();
 
         Long storeId = commentDto.getStoreId();
         Long userId = commentDto.getUserId();
-        int commentCnt = commentList.size() + 1;
-        String nickName = commentDto.getNickName();
+        String userName = commentDto.getUserName();
         String comment = commentDto.getComment();
 
-        Comment createComment = new Comment(storeId, userId, commentCnt, nickName, comment);
+        Comment createComment = new Comment(storeId, userId, userName, comment);
 
         commentRepository.save(createComment);
         return createComment;

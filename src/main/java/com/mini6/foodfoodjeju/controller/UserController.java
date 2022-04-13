@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -29,9 +31,10 @@ public class UserController {
     }
     // 로그인
     @PostMapping("/api/user/login")
-    public ReturnUserDto login(@RequestBody LoginDto loginDto) {
-
-        return userService.login(loginDto);
+    public ReturnUserDto login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+        ReturnUserDto returnUserDto = userService.login(loginDto);
+        response.addHeader("X-AUTH-TOKEN", returnUserDto.getToken());
+        return returnUserDto;
     }
 
 
