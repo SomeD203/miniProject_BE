@@ -24,9 +24,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
 
-    private static final String ADMIN_TOKEN = "AAABnv/xRVklrnYxKZ0aHgTBcXukeZygoC";
-
-
+//    private static final String ADMIN_TOKEN = "AAABnv/xRVklrnYxKZ0aHgTBcXukeZygoC";
 
 //    @Transactional
     public String registerUser(SignupRequestDto signupRequestDto) {
@@ -37,7 +35,7 @@ public class UserService {
         //아이디 중복검사
         UserValidator.checkUserName(foundUsername);
         //패스워드 일치여부 검사
-
+//        UserValidator.checkPassword(signupRequestDto);
 // 패스워드 암호화
         String password = passwordEncoder.encode(signupRequestDto.getPassword());
 

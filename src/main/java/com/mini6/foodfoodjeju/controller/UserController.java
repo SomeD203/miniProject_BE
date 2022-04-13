@@ -8,6 +8,9 @@ import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -30,6 +33,7 @@ public class UserController {
 
         return userService.login(loginDto);
     }
+
 
 
 //    //카카오 회원가입 및 로그인 요청 처리

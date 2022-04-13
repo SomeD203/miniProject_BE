@@ -23,10 +23,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column
+    @Enumerated(value = EnumType.STRING)
+    private UserRoleEnum role;
 
-//    @Column(nullable = false)
-//    @Enumerated(value = EnumType.STRING)
-//    private UserRoleEnum role;
 
     @Column(unique = true)
     private Long kakaoId;

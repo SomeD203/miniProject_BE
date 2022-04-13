@@ -54,13 +54,14 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override //계정이 가지고 있는 권한 목록들을 리턴
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        UserRoleEnum userRole = user.getRole();
-        String authority = userRole.getAuthority();
+//        UserRoleEnum userRole = user.getRole();
+//        String authority = userRole.getAuthority();
+//
+//        SimpleGrantedAuthority simpleAuthority = new SimpleGrantedAuthority(authority);
+//        Collection<GrantedAuthority> authorities = new ArrayList<>();
+//        authorities.add(simpleAuthority);
 
-        SimpleGrantedAuthority simpleAuthority = new SimpleGrantedAuthority(authority);
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(simpleAuthority);
-
-        return authorities;
+//        return authorities;
+        return null;
     }
 }
