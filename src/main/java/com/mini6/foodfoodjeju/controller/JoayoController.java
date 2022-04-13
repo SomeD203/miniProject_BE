@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class JoayoController {
     private final JoayoService joayoService;
 
-    @PostMapping("/pictures/like")
+    @PostMapping("/api/joayo")
     public boolean getLikes(@RequestBody JoayoRequestDto joayoRequestDto){
         return joayoService.getLikes(joayoRequestDto);
     }
