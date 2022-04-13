@@ -8,7 +8,6 @@ import com.mini6.foodfoodjeju.repository.UserRepository;
 import com.mini6.foodfoodjeju.security.JwtTokenProvider;
 import com.mini6.foodfoodjeju.validator.UserValidator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

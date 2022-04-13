@@ -8,6 +8,6 @@ public class CommentDto {
     private Long storeId;
     private Long userId;
     private int commentCnt;
-    private String nickName;
+    private String userName;
     private String comment;
 }

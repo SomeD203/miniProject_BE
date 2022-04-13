@@ -7,9 +7,8 @@ import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
 import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletResponse;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
 @RestController
@@ -29,9 +28,10 @@ public class UserController {
     }
     // 로그인
     @PostMapping("/api/user/login")
-    public ReturnUserDto login(@RequestBody LoginDto loginDto) {
-
-        return userService.login(loginDto);
+    public ReturnUserDto login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+        ReturnUserDto returnUserDto = userService.login(loginDto);
+        response.addHeader("X-AUTH-TOKEN", returnUserDto.getToken());
+        return returnUserDto;
     }
 
 
