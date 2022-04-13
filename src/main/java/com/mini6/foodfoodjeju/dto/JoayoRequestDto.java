@@ -11,5 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class JoayoRequestDto {
     private Long openApiId;
-    private Long likeUserId;
+//    private Long likeUserId;
+    private String username;
 }
+

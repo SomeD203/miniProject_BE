@@ -9,4 +9,6 @@ public class OpenApiDto {
     private String address;
     private String phone;
     private String image;
+
+    private Long openApiId;
 }
