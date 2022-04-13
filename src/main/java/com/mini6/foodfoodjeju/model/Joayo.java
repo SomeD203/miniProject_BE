@@ -19,22 +19,19 @@ public class Joayo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long joayoId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "openApiId", nullable = false)
-//    private OpenApi openApi;
+
     @Column
     private Long openApiId;
 
-//    @Column
-//    private Long likeUserId;
 
     @Column
     private String username;
 
-//    public Joayo(Long openApiId, String username){
-//        this.openApiId = openApiId;
-//        this.username = username;
-//    }
+//    @ManyToOne
+//    @JoinColumn
+//    private OpenApi openApi;
+
+
 
     public Joayo(Long openApiId, String username){
         this.username = username;

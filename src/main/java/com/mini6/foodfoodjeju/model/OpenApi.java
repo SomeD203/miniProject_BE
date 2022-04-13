@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
@@ -33,6 +34,9 @@ public class OpenApi {
 
     @Column
     private String intro;
+
+//    @OneToMany(mappedBy = "openApi",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private List<Joayo> joayo;
 
     public OpenApi(String title, String regionName, String address, String phoneno, String photoUrl, String desc) {
         this.storeName = title;
