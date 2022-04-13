@@ -1,7 +1,5 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.mini6.foodfoodjeju.dto.RepPhoto;
-import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.repository.CommentRepository;
 import com.mini6.foodfoodjeju.repository.OpenApiRepository;

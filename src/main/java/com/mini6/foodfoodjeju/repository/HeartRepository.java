@@ -7,4 +7,6 @@ import java.util.Collection;
 
 public interface HeartRepository extends JpaRepository<Heart, Long> {
     Collection<Object> findByStoreId(Long openApiId);
+
+    void deleteByStoreIdAndUserName(Long storeId, String userName);
 }

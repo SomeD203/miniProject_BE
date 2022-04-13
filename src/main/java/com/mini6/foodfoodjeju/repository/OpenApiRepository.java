@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OpenApiRepository extends JpaRepository<OpenApi, Long> {
-    List<OpenApi> findAllByRegionName(String regionName);
+    List<OpenApi> findByRegionName(String regionName);
 
     @Modifying
     @Transactional
