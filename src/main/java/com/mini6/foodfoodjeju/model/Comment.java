@@ -24,26 +24,21 @@ public class Comment {
     private Long userId;
 
     @Column
-    private Integer commentCnt = 0;
-
-    @Column
-    private String nickName;
+    private String userName;
 
     @Column
     private String comment;
 
-    public Comment(Long storeId, Long userId, int commentCnt, String nickName, String comment) {
+    public Comment(Long storeId, Long userId, String nickName, String comment) {
         this.storeId = storeId;
         this.userId = userId;
-        this.commentCnt = commentCnt;
-        this.nickName = nickName;
+        this.userName = nickName;
         this.comment = comment;
     }
 
     public void update(CommentDto commentDto) {
         this.userId = commentDto.getUserId();
-        this.commentCnt = commentDto.getCommentCnt();
-        this.nickName = commentDto.getNickName();
+        this.userName = commentDto.getUserName();
         this.comment = commentDto.getComment();
     }
 }

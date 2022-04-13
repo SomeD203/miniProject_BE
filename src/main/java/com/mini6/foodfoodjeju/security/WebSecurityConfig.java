@@ -13,13 +13,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Configuration
@@ -51,10 +54,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        // TODO: 2022/04/13 http.addFilterBefore(new Testfilter, BasicAuthenticationFilter.class);
+
         http
                 // token을 사용하는 방식이기 때문에 csrf를 disable합니다.
-                .addFilter(corsConfig.corsFilter())
-                .httpBasic().disable() // rest api 만을 고려하여 기본 설정은 해제하겠습니다.
+                .addFilter(corsConfig.corsFilter())// @CrossOrigin(인증 X), 시큐리티 필터에 등록(인증 O)
+                .formLogin().disable() // 기본 로그인 페이지 안쓴다.
+                .httpBasic().disable() // rest api 만을 고려하여 기본 설정은 해제하겠습니다. (기본적인 HTTP 로그인 방식을 아예 안쓴다.)
                 .csrf().disable()
 
                 .exceptionHandling()

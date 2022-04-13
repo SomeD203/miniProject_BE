@@ -15,8 +15,8 @@ public class Heart {
     @Id
     private Long heartId;
 
-//    @OneToMany
-//    private Store storeId;
+    @Column
+    private Long storeId;
 
     @Column
     private Long userId;
