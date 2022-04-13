@@ -1,5 +1,7 @@
 package com.mini6.foodfoodjeju.model;
 
+import com.mini6.foodfoodjeju.dto.OpenApiDto;
+import com.mini6.foodfoodjeju.dto.userdto.UserInfoDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,12 +25,20 @@ public class Joayo {
     @Column
     private Long openApiId;
 
-    @Column
-    private Long likeUserId;
+//    @Column
+//    private Long likeUserId;
 
-    public Joayo(Long openApiId, Long likeUserId){
+    @Column
+    private String username;
+
+//    public Joayo(Long openApiId, String username){
+//        this.openApiId = openApiId;
+//        this.username = username;
+//    }
+
+    public Joayo(Long openApiId, String username){
+        this.username = username;
         this.openApiId = openApiId;
-        this.likeUserId = likeUserId;
     }
 
 }

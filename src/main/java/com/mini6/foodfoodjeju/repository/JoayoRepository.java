@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface JoayoRepository extends JpaRepository<Joayo, Long> {
-    Optional<Joayo> findByOpenApiIdAndLikeUserId(Long openApiId, Long likeUserId);
+    Optional<Joayo> findByOpenApiIdAndUsername(Long openApiId, String username);
 }
