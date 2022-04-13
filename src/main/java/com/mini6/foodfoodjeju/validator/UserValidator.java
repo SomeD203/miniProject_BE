@@ -31,9 +31,9 @@ public class UserValidator {
         if(password.equals("")) {
             throw new IllegalArgumentException("비밀번호는 필수 입력 값 입니다");
         }
-        if(email.equals("")) {
-            throw new IllegalArgumentException("이메일은 필수 입력 값 입니다");
-        }
+//        if(email.equals("")) {
+//            throw new IllegalArgumentException("이메일은 필수 입력 값 입니다");
+//        }
 
         if(!Pattern.matches("^[a-zA-Z0-9]{4,12}$",username)) {
             throw new IllegalArgumentException("아이디는 대문자,소문자,숫자로 이루어진 4~12자여야 합니다.");

@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // TODO: 2022/04/13 http.addFilterBefore(new Testfilter, BasicAuthenticationFilter.class);
-        
+
         http
                 // token을 사용하는 방식이기 때문에 csrf를 disable합니다.
                 .addFilter(corsConfig.corsFilter())// @CrossOrigin(인증 X), 시큐리티 필터에 등록(인증 O)

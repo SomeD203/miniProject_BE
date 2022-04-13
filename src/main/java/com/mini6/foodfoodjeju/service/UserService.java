@@ -4,7 +4,6 @@ import com.mini6.foodfoodjeju.dto.userdto.LoginDto;
 import com.mini6.foodfoodjeju.dto.userdto.ReturnUserDto;
 import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
 import com.mini6.foodfoodjeju.model.User;
-import com.mini6.foodfoodjeju.model.UserRoleEnum;
 import com.mini6.foodfoodjeju.repository.UserRepository;
 import com.mini6.foodfoodjeju.security.JwtTokenProvider;
 import com.mini6.foodfoodjeju.validator.UserValidator;
@@ -24,9 +23,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
 
-    private static final String ADMIN_TOKEN = "AAABnv/xRVklrnYxKZ0aHgTBcXukeZygoC";
-
-
+//    private static final String ADMIN_TOKEN = "AAABnv/xRVklrnYxKZ0aHgTBcXukeZygoC";
 
 //    @Transactional
     public String registerUser(SignupRequestDto signupRequestDto) {
@@ -40,18 +37,18 @@ public class UserService {
 //        UserValidator.checkPassword(signupRequestDto);
 // 패스워드 암호화
         String password = passwordEncoder.encode(signupRequestDto.getPassword());
-        String email = signupRequestDto.getEmail();
+
 //        String nickname = requestDto.getNickname();
         // 사용자 ROLE 확인
-        UserRoleEnum role = UserRoleEnum.USER;
-        if (signupRequestDto.isAdmin()) {
-            if (!signupRequestDto.getAdminToken().equals(ADMIN_TOKEN)) {
-                throw new IllegalArgumentException("관리자 암호가 틀려 등록이 불가능합니다.");
-            }
-            role = UserRoleEnum.ADMIN;
-        }
+//        UserRoleEnum role = UserRoleEnum.USER;
+//        if (signupRequestDto.isAdmin()) {
+//            if (!signupRequestDto.getAdminToken().equals(ADMIN_TOKEN)) {
+//                throw new IllegalArgumentException("관리자 암호가 틀려 등록이 불가능합니다.");
+//            }
+//            role = UserRoleEnum.ADMIN;
+//        }
 
-        User user = new User(username, password, email);
+        User user = new User(username, password);
         userRepository.save(user);
         return "Success Sign up";
     }

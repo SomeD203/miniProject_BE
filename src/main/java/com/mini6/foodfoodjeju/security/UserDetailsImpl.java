@@ -60,7 +60,6 @@ public class UserDetailsImpl implements UserDetails {
 //        SimpleGrantedAuthority simpleAuthority = new SimpleGrantedAuthority(authority);
 //        Collection<GrantedAuthority> authorities = new ArrayList<>();
 //        authorities.add(simpleAuthority);
-//
 //        return authorities;
         return null;
     }

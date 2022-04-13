@@ -1,17 +1,14 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.mini6.foodfoodjeju.dto.userdto.LoginDto;
 import com.mini6.foodfoodjeju.dto.userdto.ReturnUserDto;
 import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
-import com.mini6.foodfoodjeju.repository.UserRepository;
-import com.mini6.foodfoodjeju.service.KakaoUserService;
 import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletResponse;
+
 
 
 @RestController
@@ -20,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserController {
 
     private final UserService userService;
-    private final KakaoUserService kakaoUserService;
+//    private final KakaoUserService kakaoUserService;
 
 
     //회원가입
@@ -36,6 +33,7 @@ public class UserController {
         response.addHeader("X-AUTH-TOKEN", returnUserDto.getToken());
         return returnUserDto;
     }
+
 
 
 //    //카카오 회원가입 및 로그인 요청 처리
