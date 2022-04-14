@@ -1,5 +1,6 @@
 package com.mini6.foodfoodjeju.controller;
 
+import com.mini6.foodfoodjeju.dto.OpenApiDto;
 import com.mini6.foodfoodjeju.dto.RepPhoto;
 import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.model.OpenApi;
@@ -22,12 +23,10 @@ public class DetailController {
     private final DetailService detailService;
 
 
-
     @GetMapping("/api/main")
     public List<OpenApi> getMain(){
         return openApiRepository.findAll();
     }
-
 
 
     @GetMapping("/api/main/{storeId}/detail")
