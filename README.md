@@ -7,7 +7,7 @@
   <div align=center><strong>
 Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여 지역별로 제주시에서 추천하는 맛집들을 불러와 보여주고,<br>
 회원가입 기능 및 로그인된 사람만 좋아요와 댓글 구현을 목표로 만든 프로젝트. 
-  <hr> link: http:// </hr>
+  <hr> link: http://foodfoodhan-jeju.s3-website-us-west-2.amazonaws.com/ </hr>
   </strong></div>
   <hr></hr>
   
@@ -17,11 +17,11 @@ Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여
   
   
 ## 🎥 시연영상
-<div align=center><strong> link: https://youtu.be/2Di3ZUv-WV4</strong></div>
+<div align=center><strong> link: https://youtu.be/ch0TCmkSgB8 </strong></div>
 
   
 ## 🌱 프로젝트 초안
-<div align=center><strong> link: https://www.notion.so/invite/1d865d8387f1d5cf664351d7aaea036c37925c62.</strong></div>
+<div align=center><strong> link: https://cactus-pea-14a.notion.site/6-SA-deb9a542f78748379684951445717af1 </strong></div>
 
 
 ## 👫 팀원
