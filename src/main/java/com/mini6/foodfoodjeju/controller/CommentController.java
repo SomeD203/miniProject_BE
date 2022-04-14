@@ -41,4 +41,10 @@ public class CommentController {
         commentRepository.deleteById(commentId);
         return "삭제 완료 ><";
     }
+
+    // 댓글 카운트
+    @GetMapping("/api/comment/{openApiId}/commentCnt")
+    public int commentCnt(@PathVariable Long openApiId){
+        return commentRepository.findAllByStoreId(openApiId).size();
+    }
 }

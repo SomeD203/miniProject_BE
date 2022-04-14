@@ -11,4 +11,6 @@ public class OpenApiDto {
     private String image;
 
     private Long openApiId;
+
+    private int commentCnt;
 }
