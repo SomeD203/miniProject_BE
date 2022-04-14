@@ -13,8 +13,9 @@ public class HeartController {
 
     @PostMapping("/api/heart/{storeId}")
     public Boolean saveHeart(@PathVariable Long storeId, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        System.out.println(storeId);
-        System.out.println(userDetails.getUsername());
+        if(userDetails == null){
+            return false;
+        }
         return heartService.saveHeart(storeId, userDetails.getUsername());
     }
 
