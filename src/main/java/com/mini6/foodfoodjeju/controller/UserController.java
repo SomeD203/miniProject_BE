@@ -4,8 +4,10 @@ package com.mini6.foodfoodjeju.controller;
 import com.mini6.foodfoodjeju.dto.userdto.LoginDto;
 import com.mini6.foodfoodjeju.dto.userdto.ReturnUserDto;
 import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
+import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,6 +34,13 @@ public class UserController {
         ReturnUserDto returnUserDto = userService.login(loginDto);
         response.addHeader("X-AUTH-TOKEN", returnUserDto.getToken());
         return returnUserDto;
+    }
+
+    // 로그인 여부 확인
+    @PostMapping("/api/user/loginCheck")
+    public LoginDto loginCheck(@AuthenticationPrincipal UserDetailsImpl userDetails){
+        String username = userDetails.getUser().getUsername();
+        return new LoginDto(username);
     }
 
 
