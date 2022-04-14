@@ -1,9 +1,4 @@
-# FOOD FOOD한 JeJu 🏝 (Mini Project 6조)
-
-> JeJu 좋은 식당이 가득한 Service! 🍊
----
-### 2022.04.08 Fri ~ 2022.04.14 Thu
-
+# FOOD FOOD한 JeJu 🏝 (Mini Project 6조) > JeJu 좋은 식당이 가득한 Service! 🍊
 
 ## 👋 프로젝트 소개
 <p align="center"><img src=https://ifh.cc/g/CW0w4g.png></p>
