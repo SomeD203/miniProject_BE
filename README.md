@@ -3,6 +3,8 @@
 
 ## 👋 프로젝트 소개
 <p align="center"><img src=https://ifh.cc/g/CW0w4g.png></p>
+![image](https://user-images.githubusercontent.com/48950985/163385053-b6c48140-a414-4baa-9579-11cd5aa69fa4.png)
+
   
   <div align=center><strong>
 Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여 지역별로 제주시에서 추천하는 맛집들을 불러와 보여주고,<br>
