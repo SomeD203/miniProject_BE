@@ -21,23 +21,18 @@ public class Comment {
     private Long storeId;
 
     @Column
-    private Long userId;
-
-    @Column
     private String userName;
 
     @Column
     private String comment;
 
-    public Comment(Long storeId, Long userId, String nickName, String comment) {
+    public Comment(Long storeId, String userName, String comment) {
         this.storeId = storeId;
-        this.userId = userId;
-        this.userName = nickName;
+        this.userName = userName;
         this.comment = comment;
     }
 
     public void update(CommentDto commentDto) {
-        this.userId = commentDto.getUserId();
         this.userName = commentDto.getUserName();
         this.comment = commentDto.getComment();
     }

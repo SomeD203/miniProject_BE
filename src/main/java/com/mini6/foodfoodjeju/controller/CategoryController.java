@@ -1,56 +1,38 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.mini6.foodfoodjeju.model.Heart;
 import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.model.TestStore;
-import com.mini6.foodfoodjeju.repository.HeartRepository;
 import com.mini6.foodfoodjeju.repository.OpenApiRepository;
-import com.mini6.foodfoodjeju.repository.TestStoreRepository;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
-import lombok.Getter;
+import com.mini6.foodfoodjeju.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
 public class CategoryController {
     private final OpenApiRepository openApiRepository;
-    private final TestStoreRepository testStoreRepository;
-    private final HeartRepository heartRepository;
+    private final StoreService storeService;
 
     @ResponseBody
     @GetMapping("api/main/{regionName}")
-    public List<OpenApi> categoryCard(@PathVariable String regionName) {
-        System.out.println(regionName);
+    public Map<String, List<OpenApi>> categoryCard(@PathVariable String regionName) {
         List<OpenApi> openApiList = openApiRepository.findByRegionName(regionName);
-        for(OpenApi openApi : openApiList){
-            System.out.println(openApi.getRegionName());
-        }
-        return openApiList;
-    }
-
-    @PostMapping("/api/test")
-    public String secTest(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        System.out.println(userDetails.getUsername());
-        if(userDetails == null){
-            throw new NullPointerException("로그인 안했네 이거");
-        }
-        return "POST 왔어!";
+        Map<String, List<OpenApi>> openApiMap = new HashMap<>();
+        openApiMap.put("openApi", openApiList);
+        return openApiMap;
     }
 
     @GetMapping("/api/test")
     public List<TestStore> testStores(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        List<TestStore> testStores = new ArrayList<>();
-        for(OpenApi openApi : openApiRepository.findAll()){
-            List<Heart> hearts = heartRepository.findByStoreId(openApi.getOpenApiId());
-            TestStore testStore = new TestStore(openApi, hearts);
-            testStores.add(testStore);
+        if(userDetails == null){
+            return storeService.getStores(null);
         }
-
-        return testStores;
+        return storeService.getStores(userDetails);
     }
 }

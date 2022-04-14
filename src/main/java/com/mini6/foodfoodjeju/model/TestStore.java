@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -18,12 +17,19 @@ public class TestStore {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private OpenApi openApi;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Heart> hearts;
+    private int hearts;
+
+    @Column
+    private int commentCnt;
+
+    @Column
+    private Boolean heartState;
 
 
-    public TestStore(OpenApi openApi ,List<Heart> hearts) {
+    public TestStore(OpenApi openApi ,int hearts, int commentCnt, Boolean heartState) {
         this.openApi = openApi;
         this.hearts = hearts;
+        this.commentCnt = commentCnt;
+        this.heartState = heartState;
     }
 }
