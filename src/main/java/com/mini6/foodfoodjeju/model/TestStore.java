@@ -24,7 +24,7 @@ public class TestStore {
 
     @Column
     private Boolean heartState;
-    
+
 
     public TestStore(OpenApi openApi ,int hearts, int commentCnt, Boolean heartState) {
         this.openApi = openApi;

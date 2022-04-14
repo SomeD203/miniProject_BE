@@ -20,4 +20,8 @@ public class LoginDto {
     @Size(min = 3, max = 100)
     private String password;
 
+    public LoginDto(String username){
+        this.username = username;
+    }
+
 }
