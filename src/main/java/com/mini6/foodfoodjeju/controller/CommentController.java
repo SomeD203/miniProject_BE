@@ -3,8 +3,6 @@ package com.mini6.foodfoodjeju.controller;
 import com.mini6.foodfoodjeju.dto.CommentDto;
 import com.mini6.foodfoodjeju.model.Comment;
 import com.mini6.foodfoodjeju.repository.CommentRepository;
-import com.mini6.foodfoodjeju.repository.HeartRepository;
-import com.mini6.foodfoodjeju.repository.OpenApiRepository;
 import com.mini6.foodfoodjeju.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +13,6 @@ import java.util.List;
 public class CommentController {
     private final CommentRepository commentRepository;
     private final CommentService commentService;
-    private final HeartRepository heartRepository;
-    private final OpenApiRepository openApiRepository;
 
     @ResponseBody
     @GetMapping("/api/comment/{openApiId}")
@@ -40,11 +36,5 @@ public class CommentController {
     public String deleteComment(@PathVariable Long commentId){
         commentRepository.deleteById(commentId);
         return "삭제 완료 ><";
-    }
-
-    // 댓글 카운트
-    @GetMapping("/api/comment/{openApiId}/commentCnt")
-    public int commentCnt(@PathVariable Long openApiId){
-        return commentRepository.findAllByStoreId(openApiId).size();
     }
 }

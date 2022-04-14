@@ -53,7 +53,27 @@ public class StoreService {
                                         }
                                 }
                         }
+                        int commentCnt = commentRepository.findAllByStoreId(openApi.getOpenApiId()).size();
 
+                        TestStore testStore = new TestStore(openApi, hearts.size(), commentCnt, heartState);
+                        testStores.add(testStore);
+                }
+
+                return testStores;
+        }
+
+        public List<TestStore> getCategory(String regionName, UserDetailsImpl userDetails) {
+                List<TestStore> testStores = new ArrayList<>();
+                for(OpenApi openApi : openApiRepository.findByRegionName(regionName)){
+                        List<Heart> hearts = heartRepository.findByStoreId(openApi.getOpenApiId());
+                        boolean heartState = false;
+                        if(!(userDetails == null)){
+                                for (Heart heart : hearts){
+                                        if(heart.getUserName().equals(userDetails.getUsername())){
+                                                heartState = true;
+                                        }
+                                }
+                        }
                         int commentCnt = commentRepository.findAllByStoreId(openApi.getOpenApiId()).size();
 
                         TestStore testStore = new TestStore(openApi, hearts.size(), commentCnt, heartState);

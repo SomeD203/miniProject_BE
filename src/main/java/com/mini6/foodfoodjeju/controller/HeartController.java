@@ -6,9 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-
 @RequiredArgsConstructor
 @RestController
 public class HeartController {
@@ -26,4 +23,5 @@ public class HeartController {
         heartService.deleteHeart(storeId, userDetails.getUsername());
         return false;
     }
+
 }

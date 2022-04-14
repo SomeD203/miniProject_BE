@@ -4,7 +4,6 @@ import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.repository.CommentRepository;
 import com.mini6.foodfoodjeju.repository.OpenApiRepository;
 import com.mini6.foodfoodjeju.service.DetailService;
-import com.mini6.foodfoodjeju.service.StoreInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,6 @@ import java.util.List;
 public class DetailController {
 
     private final CommentRepository commentRepository;
-    private final StoreInfoService storeInfoService;
     private final OpenApiRepository openApiRepository;
     private final DetailService detailService;
 
