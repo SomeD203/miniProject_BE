@@ -16,11 +16,10 @@ public class CommentService {
     public Comment createComment(CommentDto commentDto) {
 
         Long storeId = commentDto.getStoreId();
-        Long userId = commentDto.getUserId();
         String userName = commentDto.getUserName();
         String comment = commentDto.getComment();
 
-        Comment createComment = new Comment(storeId, userId, userName, comment);
+        Comment createComment = new Comment(storeId, userName, comment);
 
         commentRepository.save(createComment);
         return createComment;

@@ -1,22 +1,24 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.mini6.foodfoodjeju.dto.HeartDto;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.HeartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RequiredArgsConstructor
 @RestController
 public class HeartController {
-    HeartService heartService;
+    private final HeartService heartService;
 
     @PostMapping("/api/heart/{storeId}")
     public Boolean saveHeart(@PathVariable Long storeId, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        heartService.saveHeart(storeId, userDetails.getUsername());
-        return true;
+        System.out.println(storeId);
+        System.out.println(userDetails.getUsername());
+        return heartService.saveHeart(storeId, userDetails.getUsername());
     }
 
     @DeleteMapping("/api/heart/{storeId}")

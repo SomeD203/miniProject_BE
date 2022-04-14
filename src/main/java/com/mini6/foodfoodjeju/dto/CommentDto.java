@@ -6,8 +6,6 @@ import lombok.Getter;
 public class CommentDto {
     private Long commentId;
     private Long storeId;
-    private Long userId;
-    private int commentCnt;
     private String userName;
     private String comment;
 }
