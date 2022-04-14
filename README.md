@@ -18,7 +18,7 @@ Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여
   
   
 ## 🎥 시연영상
-<div align=center><strong> link: https://youtu.be/ch0TCmkSgB8 </strong></div>
+<div align=center><strong> link: https://youtu.be/UOvodOJeNSk </strong></div>
 
   
 ## 🌱 프로젝트 초안
