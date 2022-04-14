@@ -1,16 +1,13 @@
 package com.mini6.foodfoodjeju.controller;
 
-
-import com.mini6.foodfoodjeju.dto.StoreRequestDto;
-import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.model.Store;
+import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController //제이슨 형태로 해보자
@@ -23,25 +20,11 @@ public class StoreController {
         this.storeService = storeService;
     }
 
-    @PostMapping("api/stores")
-    public List<Store> addStores(
-            @RequestBody StoreRequestDto storeRequestDto,
-            @RequestParam OpenApi openApi // 이거 뭐지
-    ){
-        List<String> storesNames = storeRequestDto.getStoresNames();
-//        OpenApi openApi = openApi.ge
-
-       List<Store> stores = storeService.addStores(storesNames, openApi);
-
-        return stores;
-
+    @GetMapping("/api/main")
+    public List<Store> testStores(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        if(userDetails == null){
+            return storeService.getStores(null);
+        }
+        return storeService.getStores(userDetails);
     }
-
-//    @GetMapping("/api/main")
-//    public List<Store> getStores(@RequestParam OpenApi openApi){
-//
-//        System.out.println(openApi);
-//        return storeService.getStores(openApi);
-//
-//    }
 }

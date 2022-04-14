@@ -1,10 +1,9 @@
 package com.mini6.foodfoodjeju.service;
 
-import com.mini6.foodfoodjeju.dto.OpenApiDto;
 import com.mini6.foodfoodjeju.model.Heart;
-import com.mini6.foodfoodjeju.model.Joayo;
 import com.mini6.foodfoodjeju.model.OpenApi;
-import com.mini6.foodfoodjeju.model.TestStore;
+import com.mini6.foodfoodjeju.repository.OpenApiRepository;
+import com.mini6.foodfoodjeju.model.Store;
 import com.mini6.foodfoodjeju.repository.*;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +29,8 @@ public class DetailService {
 
     // Detail페이지에 openapi, 좋아요 개수, 코멘트 개수, 좋아요 상태)
     @Transactional
-    public List<TestStore> getStoresDetail(Long storeId, UserDetailsImpl userDetails) {
-        List<TestStore> testStores = new ArrayList<>();
+    public List<Store> getStoresDetail(Long storeId, UserDetailsImpl userDetails) {
+        List<Store> stores = new ArrayList<>();
 
         OpenApi openApi = openApiRepository.findById(storeId).orElse(null);
         List<Heart> hearts = heartRepository.findByStoreId(openApi.getOpenApiId());
@@ -44,9 +43,9 @@ public class DetailService {
             }
         }
         int commentCnt = commentRepository.findAllByStoreId(openApi.getOpenApiId()).size();
-        TestStore testStore = new TestStore(openApi, hearts.size(), commentCnt, heartState);
-        testStores.add(testStore);
+        Store store = new Store(openApi, hearts.size(), commentCnt, heartState);
+        stores.add(store);
 
-        return testStores;
+        return stores;
     }
 }

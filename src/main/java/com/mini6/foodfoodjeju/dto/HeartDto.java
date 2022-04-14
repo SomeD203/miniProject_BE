@@ -6,5 +6,4 @@ import lombok.Getter;
 public class HeartDto {
     private Long storeId;
     private String userName;
-    private Boolean likeState;
 }
