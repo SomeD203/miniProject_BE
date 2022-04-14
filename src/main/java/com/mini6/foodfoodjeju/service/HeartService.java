@@ -1,21 +1,20 @@
 package com.mini6.foodfoodjeju.service;
 
-import com.mini6.foodfoodjeju.dto.HeartDto;
 import com.mini6.foodfoodjeju.model.Heart;
 import com.mini6.foodfoodjeju.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class HeartService {
-    HeartRepository heartRepository;
+    private final HeartRepository heartRepository;
 
-    public void saveHeart(Long storeId, String userName) {
+    public boolean saveHeart(Long storeId, String userName) {
         Heart heart = new Heart(storeId, userName);
         heartRepository.save(heart);
+        return true;
     }
 
     public void deleteHeart(Long storeId, String userName) {

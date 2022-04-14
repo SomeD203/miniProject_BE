@@ -2,12 +2,9 @@ package com.mini6.foodfoodjeju.security;
 
 
 import com.mini6.foodfoodjeju.model.User;
-import com.mini6.foodfoodjeju.model.UserRoleEnum;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {

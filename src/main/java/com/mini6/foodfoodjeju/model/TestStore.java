@@ -1,9 +1,12 @@
 package com.mini6.foodfoodjeju.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
+@NoArgsConstructor
 @Getter
 @Entity
 public class TestStore {
@@ -12,23 +15,15 @@ public class TestStore {
     @Id
     private Long testStoreId;
 
-    @Column
-    private Long openApiId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private OpenApi openApi;
 
-    @Column
-    private String storeName;
-
-    @Column
-    private String regionName;
-
-    @Column
-    private String phone;
-
-    @Column
-    private String image;
-
-    @Column
-    private String intro;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Heart> hearts;
 
 
+    public TestStore(OpenApi openApi ,List<Heart> hearts) {
+        this.openApi = openApi;
+        this.hearts = hearts;
+    }
 }

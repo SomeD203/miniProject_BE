@@ -21,9 +21,6 @@ public class Heart {
     @Column
     private String userName;
 
-    @Column
-    private Boolean likeState;
-
     public Heart(Long storeId, String userName) {
         this.storeId = storeId;
         this.userName = userName;
