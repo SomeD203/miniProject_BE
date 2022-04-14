@@ -1,6 +1,6 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.mini6.foodfoodjeju.model.TestStore;
+import com.mini6.foodfoodjeju.model.Store;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.StoreService;
 import lombok.RequiredArgsConstructor;
@@ -16,20 +16,10 @@ public class CategoryController {
 
     @ResponseBody
     @GetMapping("api/main/{regionName}")
-    public List<TestStore> categoryCard(@PathVariable String regionName, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public List<Store> categoryCard(@PathVariable String regionName, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         if(userDetails == null){
             return storeService.getCategory(regionName, userDetails);
         }
         return storeService.getCategory(regionName, userDetails);
     }
-
-    @GetMapping("/api/test")
-    public List<TestStore> testStores(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        if(userDetails == null){
-            return storeService.getStores(null);
-        }
-        return storeService.getStores(userDetails);
-    }
-
-
 }

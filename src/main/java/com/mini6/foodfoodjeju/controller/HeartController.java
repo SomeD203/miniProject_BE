@@ -18,11 +18,4 @@ public class HeartController {
         }
         return heartService.saveHeart(storeId, userDetails.getUsername());
     }
-
-    @DeleteMapping("/api/heart/{storeId}")
-    public Boolean deleteHeart(@PathVariable Long storeId, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        heartService.deleteHeart(storeId, userDetails.getUsername());
-        return false;
-    }
-
 }
