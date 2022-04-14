@@ -6,7 +6,7 @@
 
 
 ## 👋 프로젝트 소개
-![tastywifi_logo](https://ifh.cc/g/CW0w4g.png)
+<div align=center>![FoodFood_logo](https://ifh.cc/g/CW0w4g.png)</div>
   
   <div align=center><strong>
 Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여 지역별로 제주시에서 추천하는 맛집들을 불러와 보여주고,<br>
@@ -29,8 +29,11 @@ Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여
 
 
 ## 👫 팀원
-FE  - 김예림   BE  - 이건도 (C)  
-    - 유진열       - 이현재 - 김현규 
+FE  - 김예림   
+    - 유진열       
+BE  - 이건도 (C)  
+    - 이현재 
+    - 김현규 
 
 ## 발생했던 에러 친구들 🌝
 * 2022.04.12 : 에러명
