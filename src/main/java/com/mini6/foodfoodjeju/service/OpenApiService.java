@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mini6.foodfoodjeju.dto.RepPhoto;
+import com.mini6.foodfoodjeju.dto.RepPhotoDto;
 import com.mini6.foodfoodjeju.dto.StoreInfoDto;
 import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.repository.CommentRepository;
@@ -15,11 +15,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,8 +50,8 @@ public class OpenApiService {
         List<OpenApi> newDataList = new ArrayList<>();
         int importKey = 0;
         for(int i = 0; i < storeInfoDtoList.size(); i++){
-            RepPhoto repPhoto = storeInfoDtoList.get(i).getRepPhoto();
-            Object photoId = repPhoto.getPhotoid().get("imgpath");
+            RepPhotoDto repPhotoDto = storeInfoDtoList.get(i).getRepPhotoDto();
+            Object photoId = repPhotoDto.getPhotoid().get("imgpath");
             String photoUrl = photoId.toString();
             String regionName = storeInfoDtoList.get(i).getRegion2cd().get("label");
             List<OpenApi> oldDataList = openApiRepository.findAll();

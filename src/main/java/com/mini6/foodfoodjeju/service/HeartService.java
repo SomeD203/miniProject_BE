@@ -13,24 +13,12 @@ import java.util.Optional;
 public class HeartService {
     HeartRepository heartRepository;
 
-    public Optional<Heart> readHeart(HeartDto heartDto) {
-
-        return null;
+    public void saveHeart(Long storeId, String userName) {
+        Heart heart = new Heart(storeId, userName);
+        heartRepository.save(heart);
     }
 
-    public void saveHeart(Long storeId) {
-        Optional<Heart> optionalHeart = heartRepository.findById(storeId);
-        if (optionalHeart.isPresent()){
-            Heart heart = optionalHeart.get();
-            heart.addCount();
-        }else {
-            return;
-        }
-    }
-
-    public void deleteHeart(Long storeId) {
-        Optional<Heart> optionalHeart = heartRepository.findById(storeId);
-        Heart heart = optionalHeart.get();
-        heart.deleteCont();
+    public void deleteHeart(Long storeId, String userName) {
+        heartRepository.deleteByStoreIdAndUserName(storeId, userName);
     }
 }

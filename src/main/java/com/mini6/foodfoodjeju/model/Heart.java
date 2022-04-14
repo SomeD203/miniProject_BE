@@ -19,19 +19,14 @@ public class Heart {
     private Long storeId;
 
     @Column
-    private Long userId;
+    private String userName;
 
     @Column
     private Boolean likeState;
 
-    @Column
-    private int storeHeartCnt = 0;
+    public Heart(Long storeId, String userName) {
+        this.storeId = storeId;
+        this.userName = userName;
 
-    public void addCount() {
-        storeHeartCnt++;
-    }
-
-    public void deleteCont() {
-        storeHeartCnt--;
     }
 }
