@@ -36,10 +36,4 @@ public class User {
         this.password = password;
     }
 
-//    public User(String username, String password, String email, UserRoleEnum role, Long kakaoId) {
-//        this.username = username;
-//        this.password = password;
-//        this.email = email;
-//        this.kakaoId = kakaoId;
-//    }
 }

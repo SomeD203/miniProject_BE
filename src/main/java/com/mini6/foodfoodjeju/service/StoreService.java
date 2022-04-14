@@ -25,21 +25,6 @@ public class StoreService {
         private final HeartRepository heartRepository;
         private final OpenApiRepository openApiRepository;
 
-        public List<Store> addStores(List<String> storeNames, OpenApi openApi){
-
-                List<Store> storeList = new ArrayList<>();
-                for (String storeName : storeNames){
-                        int commentCnt = 0;
-                        int like = 0;
-                        Store store = new Store(storeName, openApi, commentCnt, like); // 뭔진 모르는데 한번 뒤집어 깜
-                        storeRepository.save(store);
-                        storeList.add(store);
-                }
-
-                return storeList;
-
-        }
-
 
         public List<TestStore> getStores(UserDetailsImpl userDetails) {
                 List<TestStore> testStores = new ArrayList<>();

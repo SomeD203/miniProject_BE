@@ -4,11 +4,12 @@ package com.mini6.foodfoodjeju.controller;
 import com.mini6.foodfoodjeju.dto.userdto.LoginDto;
 import com.mini6.foodfoodjeju.dto.userdto.ReturnUserDto;
 import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
-import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -19,8 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 public class UserController {
 
     private final UserService userService;
-//    private final KakaoUserService kakaoUserService;
-
 
     //회원가입
     @PostMapping("/api/user/signup")
@@ -36,22 +35,8 @@ public class UserController {
         return returnUserDto;
     }
 
-    // 로그인 여부 확인
-    @PostMapping("/api/user/loginCheck")
-    public LoginDto loginCheck(@AuthenticationPrincipal UserDetailsImpl userDetails){
-        String username = userDetails.getUser().getUsername();
-        return new LoginDto(username);
-    }
 
 
-
-//    //카카오 회원가입 및 로그인 요청 처리
-//    @GetMapping("/user/kakao/callback")
-//    public String kakaoLogin(@RequestParam String code) throws JsonProcessingException {
-////        kakaoUserService.kakaoLogin(code);
-////        return "redirect:/";
-//
-//    }
 
 }
 

@@ -1,8 +1,6 @@
 package com.mini6.foodfoodjeju.service;
 
-import com.mini6.foodfoodjeju.dto.OpenApiDto;
 import com.mini6.foodfoodjeju.model.Heart;
-import com.mini6.foodfoodjeju.model.Joayo;
 import com.mini6.foodfoodjeju.model.OpenApi;
 import com.mini6.foodfoodjeju.model.TestStore;
 import com.mini6.foodfoodjeju.repository.*;
