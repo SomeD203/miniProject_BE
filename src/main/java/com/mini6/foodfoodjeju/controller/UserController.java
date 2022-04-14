@@ -6,6 +6,7 @@ import com.mini6.foodfoodjeju.dto.userdto.ReturnUserDto;
 import com.mini6.foodfoodjeju.dto.userdto.SignupRequestDto;
 import com.mini6.foodfoodjeju.service.UserService;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,9 +35,6 @@ public class UserController {
         response.addHeader("X-AUTH-TOKEN", returnUserDto.getToken());
         return returnUserDto;
     }
-
-
-
 
 }
 

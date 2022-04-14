@@ -6,9 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-
 @RequiredArgsConstructor
 @RestController
 public class HeartController {
@@ -16,10 +13,10 @@ public class HeartController {
 
     @PostMapping("/api/heart/{storeId}")
     public Boolean saveHeart(@PathVariable Long storeId, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        System.out.println(storeId);
-        System.out.println(userDetails.getUsername());
+        if(userDetails == null){
+            return false;
+        }
         return heartService.saveHeart(storeId, userDetails.getUsername());
     }
-
 
 }

@@ -1,6 +1,7 @@
 package com.mini6.foodfoodjeju.controller;
 
-import com.mini6.foodfoodjeju.model.TestStore;
+
+import com.mini6.foodfoodjeju.model.Store;
 import com.mini6.foodfoodjeju.security.UserDetailsImpl;
 import com.mini6.foodfoodjeju.service.DetailService;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,8 @@ public class DetailController {
 
     private final DetailService detailService;
 
-
     @GetMapping("/api/main/{storeId}/detail")
-    public List<TestStore> testStores(@PathVariable Long storeId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public List<Store> testStores(@PathVariable Long storeId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         if(userDetails == null){
             return detailService.getStoresDetail(storeId,null);
         }
