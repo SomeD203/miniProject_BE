@@ -6,7 +6,7 @@
 
 
 ## 👋 프로젝트 소개
-<div align=center>![FoodFood_logo](https://ifh.cc/g/CW0w4g.png)</div>
+<div align=center>(https://ifh.cc/g/CW0w4g.png)</div>
   
   <div align=center><strong>
 Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여 지역별로 제주시에서 추천하는 맛집들을 불러와 보여주고,<br>
