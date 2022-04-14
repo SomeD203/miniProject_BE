@@ -50,4 +50,4 @@ BE  - 이건도 (C)
 
 
 # 🚩
-<div align=right><small>written by GD</small></div>
+<div align=right><small>written by BE</small></div>
