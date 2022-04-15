@@ -7,8 +7,8 @@
 
   
   <div align=center><strong>
-Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여 지역별로 제주시에서 추천하는 맛집들을 불러와 보여주고,<br>
-회원가입 기능 및 로그인된 사람만 좋아요와 댓글 구현을 목표로 만든 프로젝트. 
+Visit Jeju (제주관광정보센터)에서 제공하는 OpenApi를 사용하여<br> 지역별로 제주시에서 추천하는 맛집들을 불러와 보여주고<br>
+회원가입 후 로그인된 사람만 좋아요와 댓글 작성이 가능한 서비스!
   <hr> link: http://foodfoodhan-jeju.s3-website-us-west-2.amazonaws.com/ </hr>
   </strong></div>
   <hr></hr>
